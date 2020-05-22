@@ -246,6 +246,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 7579583724241806680, guid: cec7dedb1bdda444d8b59293e7c9a4ad,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 7579583724241806682, guid: cec7dedb1bdda444d8b59293e7c9a4ad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -313,12 +318,12 @@ PrefabInstance:
     - target: {fileID: 9096302102888599976, guid: 64209cbc09d31234eb1dfa8d2df23b9b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.53
       objectReference: {fileID: 0}
     - target: {fileID: 9096302102888599976, guid: 64209cbc09d31234eb1dfa8d2df23b9b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.21
       objectReference: {fileID: 0}
     - target: {fileID: 9096302102888599976, guid: 64209cbc09d31234eb1dfa8d2df23b9b,
         type: 3}
