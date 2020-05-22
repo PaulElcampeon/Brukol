@@ -9,59 +9,62 @@ public class Jumpy : MonoBehaviour
     [SerializeField]
     private float jumpHeight;
 
-    private Rigidbody2D rigidbody2D;
+    [Header("LayerMask")]
+    [SerializeField]
+    private LayerMask groundLayerMask;
+
+    private Rigidbody2D rgb;
 
     private bool isGrounded;
+    private bool canIJumpAgain = true;
 
-    // Start is called before the first frame update
     void Start()
     {
-        rigidbody2D = GetComponentInChildren<Rigidbody2D>();
+        rgb = GetComponentInChildren<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //// Cast a ray straight down.
-        //RaycastHit2D hit = Physics2D.Raycast(transform.position, -Vector2.up);
+        
+        if (!canIJumpAgain) return;
 
-        //// If it hits something...
-        //if (hit.collider != null)
-        //{
-        //    // Calculate the distance from the surface and the "error" relative
-        //    // to the floating height.
-        //    float distance = Mathf.Abs(hit.point.y - transform.position.y);
-        //    float heightError = floatHeight - distance;
+        float rayDistance = 0.3f;
 
-        //    // The force is proportional to the height error, but we remove a part of it
-        //    // according to the object's speed.
-        //    float force = liftForce * heightError - rb2D.velocity.y * damping;
+        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position - Vector3.right * 0.2f, Vector2.down, rayDistance, groundLayerMask);
+        RaycastHit2D hitRight = Physics2D.Raycast(transform.position + Vector3.right * 0.2f, Vector2.down, rayDistance, groundLayerMask);
 
-        //    // Apply the force to the rigidbody.
-        //    rb2D.AddForce(Vector3.up * force);
-        //}
+        Debug.DrawRay(transform.position - Vector3.right * 0.2f, Vector2.down * rayDistance, Color.red);
+        Debug.DrawRay(transform.position + Vector3.right * 0.2f, Vector2.down * rayDistance, Color.red);
 
+
+        if (hitLeft.collider != null || hitRight.collider != null)
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
     }
 
     private void FixedUpdate()
     {
-        if (isGrounded) rigidbody2D.AddForce(new Vector2(0, jumpHeight) * Time.deltaTime);
+        if (isGrounded)
+        {
+            StartCoroutine(ResetCanJump());
+            rgb.velocity = new Vector2(rgb.velocity.x, jumpHeight);
+        }
+
+        rgb.velocity = new Vector2(rgb.velocity.x, rgb.velocity.y - 0.2f);
+
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private IEnumerator ResetCanJump()
     {
-        if (other.gameObject.tag == "Ground")
-        {
-            if (rigidbody2D.velocity.y == 0) isGrounded = true;
-        }
-    }
+        canIJumpAgain = false;
 
+        yield return new WaitForSeconds(0.2f);
 
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Ground")
-        {
-            if (rigidbody2D.velocity.y > 0) isGrounded = false;
-        }
+        canIJumpAgain = true;
     }
 }
