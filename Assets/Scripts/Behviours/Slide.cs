@@ -28,11 +28,11 @@ public class Slide : MonoBehaviour
     {
         float rayDistance = 0.3f;
 
-        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, rayDistance, groundLayerMask);
-        RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, rayDistance, groundLayerMask);
+        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position + new Vector3(-1 * 0.23f, 0.05f, 0), Vector2.left, rayDistance, groundLayerMask);
+        RaycastHit2D hitRight = Physics2D.Raycast(transform.position + new Vector3(-1 * 0.27f, 0.05f, 0), Vector2.right, rayDistance, groundLayerMask);
 
-        Debug.DrawRay(transform.position, Vector2.left * rayDistance, Color.red);
-        Debug.DrawRay(transform.position, Vector2.right * rayDistance, Color.red);
+        Debug.DrawRay(transform.position + new Vector3(-1 * 0.23f, 0.05f, 0), Vector2.left * rayDistance, Color.red);
+        Debug.DrawRay(transform.position + new Vector3(-1 * 0.27f, 0.05f, 0), Vector2.right * rayDistance, Color.red);
 
 
         if (hitLeft.collider != null || hitRight.collider != null)
