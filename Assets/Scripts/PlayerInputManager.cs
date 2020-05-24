@@ -19,12 +19,11 @@ public class PlayerInputManager : MonoBehaviour
                 Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
                 Vector2 touchPosition = new Vector2(wp.x, wp.y);
 
-                //GameObject.FindGameObjectsWithTag("Ground");
                 foreach(GameObject gameObject in GameObject.FindGameObjectsWithTag("Ground"))
                 {
                     if (gameObject.GetComponent<BoxCollider2D>() == Physics2D.OverlapPoint(touchPosition))
                     {
-                        gameObject.GetComponent<Packet>().RemoveMud();
+                        gameObject.GetComponent<Cell>().RemoveMud();
                     }
                 }
             }
@@ -41,7 +40,7 @@ public class PlayerInputManager : MonoBehaviour
                 {
                     if (gameObject.GetComponent<BoxCollider2D>() == Physics2D.OverlapPoint(touchPosition))
                     {
-                        gameObject.GetComponent<Packet>().RemoveMud();
+                        gameObject.GetComponent<Cell>().RemoveMud();
                     }
                 }
             }
