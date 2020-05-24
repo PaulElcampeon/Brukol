@@ -15,7 +15,7 @@ public class LevelGenerator : MonoBehaviour
 
     public Cell endingCell;
 
-    public int difficulty = 2;
+    public int difficulty = 3;
 
     private int noOfBombs;
     private int noOfRows = 5;
@@ -72,8 +72,13 @@ public class LevelGenerator : MonoBehaviour
 
             if (worldState.TryGetValue(key, out cell))
             {
-                if (!cell.hasBomb) cell.hasBomb = true;
-                bombsRemaining--;
+                if (!cell.hasBomb)
+                {
+                    cell.hasBomb = true;
+                    Debug.Log("Cell has bomb " + cell.GetGridPos());
+                    bombsRemaining--;
+
+                }
             }
         }
 
