@@ -16,6 +16,19 @@ public class LittleOne : MonoBehaviour
 
     private Rigidbody2D rgb;
 
+    private void Awake()
+    {
+        if (GameManager.instance.difficulty == 1)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * 2f, transform.localScale.y * 2f, transform.localScale.z * 2f);
+
+        } else if (GameManager.instance.difficulty == 2)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * 1.5f, transform.localScale.y * 1.5f, transform.localScale.z * 1.5f);
+
+        }
+    }
+
     void Start()
     {
         rgb = GetComponentInChildren<Rigidbody2D>();
@@ -24,6 +37,8 @@ public class LittleOne : MonoBehaviour
     private void Update()
     {
         CheckIfHittingWall();
+
+        CheckIfHittingTopLevelSide();
     }
 
     private void FixedUpdate()
@@ -35,15 +50,29 @@ public class LittleOne : MonoBehaviour
 
     private void CheckIfHittingWall()
     {
-        float dist = 0.55f;
+        float multiplier = 1;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.left * 0.28f + Vector3.down / 5, Vector2.right, dist, groundLayerMask);
+        if (GameManager.instance.difficulty == 1) multiplier *= 2f;
+        if (GameManager.instance.difficulty == 2) multiplier *= 1.5f;
 
-        Debug.DrawRay(transform.position + Vector3.left * 0.28f  + Vector3.down / 5, Vector2.right * dist, Color.red);
+        float dist = 0.55f * multiplier;
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + (Vector3.left * 0.28f + Vector3.down / 5) * multiplier, Vector2.right, dist, groundLayerMask);
+
+        Debug.DrawRay(transform.position + (Vector3.left * 0.28f  + Vector3.down / 5) * multiplier, Vector2.right * dist, Color.red);
 
         if (hit.collider != null)
         {
             movementSpeed *= -1f;
         }
+    }
+
+    public void Die()
+    {
+        Destroy(this.gameObject);
+    }
+
+    private void CheckIfHittingTopLevelSide()
+    {
     }
 }

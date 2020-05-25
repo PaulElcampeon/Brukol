@@ -15,19 +15,22 @@ public class LevelGenerator : MonoBehaviour
 
     public Cell endingCell;
 
-    public int difficulty = 3;
+    public int difficulty = 1;
 
     private int noOfBombs;
     private int noOfRows = 5;
     private int noOfColumns = 3;
 
-    private float xMax, xMin, yMax, yMin, increment, noOfBlocksAcross, noOfBlocksDownward;
+    public float xMax, xMin, yMax, yMin, increment, noOfBlocksAcross, noOfBlocksDownward;
 
     public static LevelGenerator instance;
 
     private void Awake()
     {
         instance = this;
+
+        difficulty = GameManager.instance.difficulty;
+
         if (difficulty == 1)
         {
             noOfBombs = Random.Range(5, 7);

@@ -816,7 +816,7 @@ PrefabInstance:
     - target: {fileID: 2920744262295953200, guid: 975efb92f787faa40b48c54afb2331f1,
         type: 3}
       propertyPath: difficulty
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2920744262295953201, guid: 975efb92f787faa40b48c54afb2331f1,
         type: 3}
@@ -1025,10 +1025,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 840123501, guid: 64209cbc09d31234eb1dfa8d2df23b9b, type: 3}
-      propertyPath: jumpHeight
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 9096302102888599976, guid: 64209cbc09d31234eb1dfa8d2df23b9b,
         type: 3}
       propertyPath: m_LocalPosition.x

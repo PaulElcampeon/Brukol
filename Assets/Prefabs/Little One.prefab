@@ -174,8 +174,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aabe11d5e0e48f349900c8991294d3c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 4
+  jumpHeight: 3
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
   movementSpeed: 0.5
+  particle: {fileID: 8580486331607063702, guid: 413982007349c3247aea6323b745b3f4,
+    type: 3}

@@ -2020,6 +2020,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574984721}
   m_CullTransparentMesh: 0
+--- !u!1 &593865471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9096302102888599979, guid: 64209cbc09d31234eb1dfa8d2df23b9b,
+    type: 3}
+  m_PrefabInstance: {fileID: 937196258}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &593865472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593865471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1082fdd151ecb243a61b8a3216ef8d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpHeight: 3
 --- !u!1 &599698868
 GameObject:
   m_ObjectHideFlags: 0
@@ -2820,6 +2839,10 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 840123501, guid: 64209cbc09d31234eb1dfa8d2df23b9b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9096302102888599976, guid: 64209cbc09d31234eb1dfa8d2df23b9b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2880,7 +2903,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Little One
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 840123501, guid: 64209cbc09d31234eb1dfa8d2df23b9b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 64209cbc09d31234eb1dfa8d2df23b9b, type: 3}
 --- !u!1 &976536713
 GameObject:
