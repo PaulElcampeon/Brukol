@@ -7,6 +7,9 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField]
     private GameObject cellReference;
 
+    [SerializeField]
+    private GameObject easyPlatform, mediumPlatform, hardPlatform;
+
     private List<GameObject> cells = new List<GameObject>();
 
     public Dictionary<Vector2Int, Cell> worldState = new Dictionary<Vector2Int, Cell>();
@@ -21,7 +24,7 @@ public class LevelGenerator : MonoBehaviour
     private int noOfRows = 5;
     private int noOfColumns = 3;
 
-    public float xMax, xMin, yMax, yMin, increment, noOfBlocksAcross, noOfBlocksDownward;
+    private float xMax, xMin, yMax, yMin, increment, noOfBlocksAcross, noOfBlocksDownward;
 
     public static LevelGenerator instance;
 
@@ -41,6 +44,7 @@ public class LevelGenerator : MonoBehaviour
             increment = 2;
             noOfBlocksAcross = ((xMax - xMin)/increment) + 1;
             noOfBlocksDownward = ((yMax - yMin) / increment) + 1;
+            easyPlatform.SetActive(true);
         }
         if (difficulty == 2)
         {
@@ -52,6 +56,7 @@ public class LevelGenerator : MonoBehaviour
             increment = 1.5f;
             noOfBlocksAcross = ((xMax - xMin) / increment) + 1;
             noOfBlocksDownward = ((yMax - yMin) / increment) + 1;
+            mediumPlatform.SetActive(true);
         }
         if (difficulty == 3)
         {
@@ -63,6 +68,7 @@ public class LevelGenerator : MonoBehaviour
             increment = 1;
             noOfBlocksAcross = ((xMax - xMin) / increment) + 1;
             noOfBlocksDownward = ((yMax - yMin) / increment) + 1;
+            hardPlatform.SetActive(true);
         }
     }
 
