@@ -21,12 +21,42 @@ public class LevelGenerator : MonoBehaviour
     private int noOfRows = 5;
     private int noOfColumns = 3;
 
+    private float xMax, xMin, yMax, yMin, increment;
+
     public static LevelGenerator instance;
 
     private void Awake()
     {
         instance = this;
-        noOfBombs = 10 * difficulty;
+        if (difficulty == 1)
+        {
+            noOfBombs = Random.Range(5, 7);
+            xMax = 3.22f;
+            xMin = -2.78f;
+            yMax = 4.29f;
+            yMin = -1.71f;
+            increment = 2;
+        }
+        if (difficulty == 2)
+        {
+            noOfBombs = Random.Range(10, 15);
+            xMax = 3.73f;
+            xMin = -3.77f;
+            yMax = 2.54f;
+            yMin = -3.46f;
+            increment = 1.5f;
+        }
+        if (difficulty == 3)
+        {
+            noOfBombs = Random.Range(20, 33);
+            xMax = 4.54f;
+            xMin = -4.46f;
+            yMax = 3;
+            yMin = -3;
+            increment = 1;
+        }
+
+        //noOfBombs = 10 * difficulty;
     }
 
     public void Generate()
@@ -37,9 +67,9 @@ public class LevelGenerator : MonoBehaviour
         cells.Clear();
         worldState.Clear();
 
-        for (int i = -noOfRows; i <= noOfRows; i++)
+        for (float i = -xMin; i <= xMax; i+=increment)
         {
-            for (int j = -noOfColumns; j <= noOfColumns; j++)
+            for (float j = -yMin; j <= yMax; j+=increment)
             {
                 Vector3 position = new Vector3(i, j, 0);
                 Vector2Int vector2IntOfPos = new Vector2Int(i, j);
