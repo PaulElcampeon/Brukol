@@ -108,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 5179288605552261573}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5, y: -3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 0}
   m_Children:
   - {fileID: 5179288606487991491}
   - {fileID: 8838347906091355075}
@@ -157,6 +157,7 @@ MonoBehaviour:
   mud: {fileID: 5179288606487991501}
   bomb: {fileID: 8838347906091355072}
   goal: {fileID: 5557453865861781226}
+  boardPosVector2Int: {x: 0, y: 0}
   isExplored: 0
   exploredFrom: {fileID: 0}
   isStartingPoint: 0

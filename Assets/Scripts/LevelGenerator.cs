@@ -21,7 +21,7 @@ public class LevelGenerator : MonoBehaviour
     private int noOfRows = 5;
     private int noOfColumns = 3;
 
-    private float xMax, xMin, yMax, yMin, increment;
+    private float xMax, xMin, yMax, yMin, increment, noOfBlocksAcross, noOfBlocksDownward;
 
     public static LevelGenerator instance;
 
@@ -33,9 +33,11 @@ public class LevelGenerator : MonoBehaviour
             noOfBombs = Random.Range(5, 7);
             xMax = 3.22f;
             xMin = -2.78f;
-            yMax = 4.29f;
-            yMin = -1.71f;
+            yMax = 2.09f;
+            yMin = -3.91f;
             increment = 2;
+            noOfBlocksAcross = ((xMax - xMin)/increment) + 1;
+            noOfBlocksDownward = ((yMax - yMin) / increment) + 1;
         }
         if (difficulty == 2)
         {
@@ -45,6 +47,8 @@ public class LevelGenerator : MonoBehaviour
             yMax = 2.54f;
             yMin = -3.46f;
             increment = 1.5f;
+            noOfBlocksAcross = ((xMax - xMin) / increment) + 1;
+            noOfBlocksDownward = ((yMax - yMin) / increment) + 1;
         }
         if (difficulty == 3)
         {
@@ -54,27 +58,37 @@ public class LevelGenerator : MonoBehaviour
             yMax = 3;
             yMin = -3;
             increment = 1;
+            noOfBlocksAcross = ((xMax - xMin) / increment) + 1;
+            noOfBlocksDownward = ((yMax - yMin) / increment) + 1;
         }
-
-        //noOfBombs = 10 * difficulty;
     }
 
     public void Generate()
     {
-
         foreach (GameObject cellW in GameObject.FindGameObjectsWithTag("Ground")) Destroy(cellW);
+
+        cellReference.gameObject.transform.localScale = new Vector3(increment, increment, 0);
 
         cells.Clear();
         worldState.Clear();
 
-        for (float i = -xMin; i <= xMax; i+=increment)
+        int currentXPos = 0;
+
+        for (float i = xMin; i <= xMax; i += increment)
         {
-            for (float j = -yMin; j <= yMax; j+=increment)
+            currentXPos++;
+
+            int currentYPos = 0;
+
+            for (float j = yMin; j <= yMax; j += increment)
             {
+                currentYPos++;
+
                 Vector3 position = new Vector3(i, j, 0);
-                Vector2Int vector2IntOfPos = new Vector2Int(i, j);
-                GameObject cell = Instantiate(cellReference, new Vector3(i, j, 0), Quaternion.identity, transform.parent);
-                worldState.Add(vector2IntOfPos, cell.GetComponent<Cell>());
+                Vector2Int boardPos = new Vector2Int(currentXPos, currentYPos);
+                GameObject cell = Instantiate(cellReference, position, Quaternion.identity, transform.parent);
+                cell.GetComponent<Cell>().boardPosVector2Int = boardPos;
+                worldState.Add(boardPos, cell.GetComponent<Cell>());
             }
         }
 
@@ -93,8 +107,8 @@ public class LevelGenerator : MonoBehaviour
 
         while (bombsRemaining > 0)
         {
-            int randomXPos = Random.Range(-noOfRows, noOfRows + 1);
-            int randomYPos = Random.Range(-noOfColumns, noOfColumns + 1);
+            int randomXPos = Random.Range(1, (int)noOfBlocksAcross + 1);
+            int randomYPos = Random.Range(1, (int)noOfBlocksDownward + 1);
 
             Vector2Int key = new Vector2Int(randomXPos, randomYPos);
 
@@ -113,7 +127,7 @@ public class LevelGenerator : MonoBehaviour
         }
 
         Debug.Log("No more bombs remaining");
-    } 
+    }
 
     private void AssignStartingCell()
     {
@@ -125,8 +139,8 @@ public class LevelGenerator : MonoBehaviour
 
         while (foundAvailablePos == false)
         {
-            int randomXPos = Random.Range(-noOfRows, noOfRows + 1);
-            int yPos = noOfColumns;
+            int randomXPos = Random.Range(1, (int) noOfBlocksAcross + 1);
+            int yPos = (int) noOfBlocksDownward;
 
             position = new Vector2Int(randomXPos, yPos);
 
@@ -155,8 +169,18 @@ public class LevelGenerator : MonoBehaviour
 
         while (foundAvailablePos == false)
         {
-            int randomXPos = Random.Range(-noOfRows, noOfRows + 1);
-            int yPos = Random.Range(-noOfColumns, -noOfColumns + 2);
+            int randomXPos = Random.Range(1, (int) noOfBlocksDownward + 1);
+
+            int yPos;
+
+            if (difficulty == 1)
+            {
+                yPos = Random.Range(1, 1 + 2);
+            }
+            else
+            {
+                yPos = Random.Range(1, 2 + 2);
+            }
 
             position = new Vector2Int(randomXPos, yPos);
 

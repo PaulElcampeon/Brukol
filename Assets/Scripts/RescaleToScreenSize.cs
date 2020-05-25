@@ -42,9 +42,9 @@ public class RescaleToScreenSize : MonoBehaviour
         Debug.Log("CamHeight:" + camHeight);
         Debug.Log("CamHeight:" + camWidth);
 
-        SpriteRenderer[] sprites = FindObjectsOfType<SpriteRenderer>(); 
+        SpriteRenderer[] sprites = FindObjectsOfType<SpriteRenderer>();
 
-        foreach(SpriteRenderer spritex in sprites)
+        foreach (SpriteRenderer spritex in sprites)
         {
             float spriteH = spritex.sprite.rect.height;
             float spriteW = spritex.sprite.rect.width;
@@ -55,11 +55,6 @@ public class RescaleToScreenSize : MonoBehaviour
             spritex.transform.parent.gameObject.transform.localScale = new Vector3(spirteWR, spirteHR, 1);
             //spritex.transform.localScale = new Vector3(spirteWR, spirteHR, 1);
 
-
         }
-
-
-
-
     }
 }

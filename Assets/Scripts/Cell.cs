@@ -13,6 +13,8 @@ public class Cell : MonoBehaviour
     [SerializeField]
     private GameObject goal;
 
+    public Vector2Int boardPosVector2Int;
+
     public bool isExplored = false;
     public Cell exploredFrom;
 
@@ -38,6 +40,6 @@ public class Cell : MonoBehaviour
 
     public Vector2Int GetGridPos()
     {
-        return new Vector2Int((int)transform.position.x, (int)transform.position.y);
+        return boardPosVector2Int;
     }
 }

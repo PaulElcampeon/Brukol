@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     public void SetDifficulty(int level)
     {
         difficulty = level;
-        Debug.Log("Difficulty Level has been set to: " + level);
     }
 
     public void LoadScene(string sceneName)

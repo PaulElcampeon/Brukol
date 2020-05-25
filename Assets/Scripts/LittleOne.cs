@@ -35,7 +35,7 @@ public class LittleOne : MonoBehaviour
 
     private void CheckIfHittingWall()
     {
-        float dist = 0.58f;
+        float dist = 0.55f;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position + Vector3.left * 0.28f + Vector3.down / 5, Vector2.right, dist, groundLayerMask);
 
