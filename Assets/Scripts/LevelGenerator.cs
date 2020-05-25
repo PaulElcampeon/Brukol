@@ -171,16 +171,7 @@ public class LevelGenerator : MonoBehaviour
         {
             int randomXPos = Random.Range(1, (int) noOfBlocksDownward + 1);
 
-            int yPos;
-
-            if (difficulty == 1)
-            {
-                yPos = Random.Range(1, 1 + 2);
-            }
-            else
-            {
-                yPos = Random.Range(1, 2 + 2);
-            }
+            int yPos = Random.Range(1, 1 + 2);
 
             position = new Vector2Int(randomXPos, yPos);
 
