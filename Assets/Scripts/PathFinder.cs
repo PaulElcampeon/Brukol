@@ -111,7 +111,7 @@ public class PathFinder : MonoBehaviour
                 Cell cell;
                 if (LevelGenerator.instance.worldState.TryGetValue(neighbourCoordinates, out cell))
                 {
-                    if (!cell.hasBomb)
+                    if (!cell.hasBomb && cell.GetGridPos().y >= LevelGenerator.instance.endingCell.GetGridPos().y)
                     {
                         QueueNewNeighbours(neighbourCoordinates);
                     } else
