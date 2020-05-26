@@ -144,4 +144,12 @@ public class PathFinder : MonoBehaviour
             neighbour.exploredFrom = searchCenter;
         }
     }
+
+    public void DisplayPath()
+    {
+        foreach(Cell cell in path)
+        {
+            cell.ShowPath();
+        }
+    }
 }

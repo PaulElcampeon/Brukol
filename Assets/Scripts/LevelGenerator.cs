@@ -37,7 +37,7 @@ public class LevelGenerator : MonoBehaviour
 
         if (difficulty == 1)
         {
-            noOfBombs = Random.Range(6, 8);
+            noOfBombs = Random.Range(7, 9);
             xMax = 3.22f;
             xMin = -2.78f;
             yMax = 2.09f;

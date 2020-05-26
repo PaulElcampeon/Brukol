@@ -13,6 +13,9 @@ public class Cell : MonoBehaviour
     [SerializeField]
     private GameObject goal;
 
+    [SerializeField]
+    private GameObject path;
+
     public Vector2Int boardPosVector2Int;
 
     public bool isExplored = false;
@@ -41,5 +44,10 @@ public class Cell : MonoBehaviour
     public Vector2Int GetGridPos()
     {
         return boardPosVector2Int;
+    }
+
+    public void ShowPath()
+    {
+        path.SetActive(true);
     }
 }

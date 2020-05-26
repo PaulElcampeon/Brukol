@@ -28,6 +28,15 @@ public class InGameMenu : MonoBehaviour
         inGameMenuPanel.SetActive(false);
     }
 
+    public void ClosePlayAgainPanel()
+    {
+        GameManager.instance.UnPause();
+
+        isMenuOpen = false;
+
+        playAgainPanel.SetActive(false);
+    }
+
     public void OpenMenuPanel()
     {
         if (playAgainPanel.activeInHierarchy) return;
@@ -62,5 +71,10 @@ public class InGameMenu : MonoBehaviour
         GameManager.instance.UnPause();
 
         GameManager.instance.LoadScene("Menu");
+    }
+
+    public void ShowPath()
+    {
+        PathFinder.instance.DisplayPath();
     }
 }
