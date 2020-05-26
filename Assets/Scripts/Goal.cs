@@ -15,7 +15,7 @@ public class Goal : MonoBehaviour
             Debug.Log("Game won");
 
             Instantiate(particle, gameObject.transform.position, Quaternion.identity);
-
+            other.gameObject.GetComponent<LittleOne>().MergeWithGoal(transform.position);
             Invoke("OpenPlayAgain", 1f);
         }
     }

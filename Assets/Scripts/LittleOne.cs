@@ -16,6 +16,9 @@ public class LittleOne : MonoBehaviour
 
     private Rigidbody2D rgb;
 
+    private Vector2 goalPosition;
+    private bool shouldMoveToRefuge;
+
     private void Awake()
     {
         if (GameManager.instance.difficulty == 1)
@@ -25,7 +28,6 @@ public class LittleOne : MonoBehaviour
         } else if (GameManager.instance.difficulty == 2)
         {
             transform.localScale = new Vector3(transform.localScale.x * 1.5f, transform.localScale.y * 1.5f, transform.localScale.z * 1.5f);
-
         }
     }
 
@@ -37,15 +39,22 @@ public class LittleOne : MonoBehaviour
     private void Update()
     {
         CheckIfHittingWall();
-
-        CheckIfHittingTopLevelSide();
     }
 
     private void FixedUpdate()
     {
-        rgb.velocity = new Vector2(movementSpeed, rgb.velocity.y);
+        if (shouldMoveToRefuge)
+        {
+            rgb.gravityScale = 0;
 
-        if (rgb.velocity.y == 0) rgb.velocity = new Vector2(rgb.velocity.x, jumpHeight);
+            transform.position = Vector2.MoveTowards(transform.position, goalPosition, 2f * Time.deltaTime);
+        }
+        else
+        {
+            rgb.velocity = new Vector2(movementSpeed, rgb.velocity.y);
+
+            if (rgb.velocity.y == 0) rgb.velocity = new Vector2(rgb.velocity.x, jumpHeight);
+        }
     }
 
     private void CheckIfHittingWall()
@@ -72,7 +81,9 @@ public class LittleOne : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void CheckIfHittingTopLevelSide()
+    public void MergeWithGoal(Vector2 goalPosition)
     {
+        shouldMoveToRefuge = true;
+        this.goalPosition = goalPosition;
     }
 }
