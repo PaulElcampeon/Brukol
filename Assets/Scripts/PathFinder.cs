@@ -16,6 +16,13 @@ public class PathFinder : MonoBehaviour
         Vector2Int.left
     };
 
+    public static PathFinder instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void Start()
     {
         Generate();

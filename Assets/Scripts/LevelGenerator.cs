@@ -33,6 +33,7 @@ public class LevelGenerator : MonoBehaviour
         instance = this;
 
         difficulty = GameManager.instance.difficulty;
+        Debug.Log("Difficulty is " + difficulty);
 
         if (difficulty == 1)
         {
@@ -103,9 +104,9 @@ public class LevelGenerator : MonoBehaviour
 
         Debug.Log("Generated Level");
 
-        EnableBombs();
-
         AssignStartingCell();
+
+        EnableBombs();
 
         AssignEndingCell();
     }
@@ -125,7 +126,7 @@ public class LevelGenerator : MonoBehaviour
 
             if (worldState.TryGetValue(key, out cell))
             {
-                if (!cell.hasBomb)
+                if (!cell.hasBomb && !cell.isStartingPoint)
                 {
                     cell.hasBomb = true;
                     Debug.Log("Cell has bomb " + cell.GetGridPos());
@@ -140,30 +141,43 @@ public class LevelGenerator : MonoBehaviour
 
     private void AssignStartingCell()
     {
-        Vector2Int position = Vector2Int.zero;
+        int randomXPos = Random.Range(1, (int)noOfBlocksAcross + 1);
+        int yPos = (int)noOfBlocksDownward;
 
-        bool foundAvailablePos = false;
+        Vector2Int position = new Vector2Int(randomXPos, yPos);
 
         Cell cell;
 
-        while (foundAvailablePos == false)
+        if (worldState.TryGetValue(position, out cell))
         {
-            int randomXPos = Random.Range(1, (int) noOfBlocksAcross + 1);
-            int yPos = (int) noOfBlocksDownward;
-
-            position = new Vector2Int(randomXPos, yPos);
-
-            if (worldState.TryGetValue(position, out cell))
-            {
-
-                if (!cell.hasBomb)
-                {
-                    cell.isStartingPoint = true;
-                    startingCell = cell;
-                    foundAvailablePos = true;
-                }
-            }
+            cell.isStartingPoint = true;
+            startingCell = cell;
         }
+
+        //Vector2Int position = Vector2Int.zero;
+
+        //bool foundAvailablePos = false;
+
+        //Cell cell;
+
+        //while (foundAvailablePos == false)
+        //{
+        //    int randomXPos = Random.Range(1, (int)noOfBlocksAcross + 1);
+        //    int yPos = (int)noOfBlocksDownward;
+
+        //    position = new Vector2Int(randomXPos, yPos);
+
+        //    if (worldState.TryGetValue(position, out cell))
+        //    {
+
+        //        if (!cell.hasBomb)
+        //        {
+        //            cell.isStartingPoint = true;
+        //            startingCell = cell;
+        //            foundAvailablePos = true;
+        //        }
+        //    }
+        //}
 
         Debug.Log("Starting point: " + position);
     }

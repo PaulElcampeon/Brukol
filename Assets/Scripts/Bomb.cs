@@ -10,12 +10,18 @@ public class Bomb : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag != "Packet")
+        if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<LittleOne>().Die();
 
             Instantiate(particle, gameObject.transform.position, Quaternion.identity);
 
+            Invoke("OpenPlayAgain", 1f);
         }
+    }
+
+    public void OpenPlayAgain()
+    {
+        InGameMenu.instance.OpenPlayAgainPanel();
     }
 }

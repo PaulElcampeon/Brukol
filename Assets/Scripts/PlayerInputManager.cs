@@ -6,6 +6,8 @@ public class PlayerInputManager : MonoBehaviour
 {
     void Update()
     {
+        if (InGameMenu.instance.isMenuOpen) return;
+
         CheckForTouch();
     }
 

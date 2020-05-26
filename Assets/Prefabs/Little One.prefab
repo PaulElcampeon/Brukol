@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 840123501}
   m_Layer: 0
   m_Name: Little One
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,5 +179,3 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   movementSpeed: 0.5
-  particle: {fileID: 8580486331607063702, guid: 413982007349c3247aea6323b745b3f4,
-    type: 3}

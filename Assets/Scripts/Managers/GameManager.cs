@@ -5,27 +5,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int difficulty = 1;
+    public int difficulty { get; set;}
 
     public static GameManager instance;
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(instance.gameObject);
-        }
+        instance = this;
 
         DontDestroyOnLoad(this);
+
+        difficulty = 1;
     }
 
     public void SetDifficulty(int level)
     {
         difficulty = level;
+
+        Debug.Log("Difficulty set to " + level);
     }
 
     public void LoadScene(string sceneName)
