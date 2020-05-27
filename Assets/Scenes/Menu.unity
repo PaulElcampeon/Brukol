@@ -3183,7 +3183,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 656.876, y: -372.29498}
+  m_AnchoredPosition: {x: 647.7185, y: -599.8857}
   m_SizeDelta: {x: 469.85394, y: 610.36975}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1159118118
@@ -3227,10 +3227,7 @@ MonoBehaviour:
     DESIGNER
 
 
-    BGM
-
-
-    FONTS'
+    BGM'
 --- !u!222 &1159118119
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3616,7 +3613,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1181.4751, y: -372.29498}
+  m_AnchoredPosition: {x: 1190.6328, y: -599.8857}
   m_SizeDelta: {x: 633.14844, y: 600.92163}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241482022
@@ -3660,11 +3657,7 @@ MonoBehaviour:
     PAUL OLADELE
 
 
-    PAUL OLADELE
-
-
-    PAUL
-    OLADELE'
+    WILLIAM ROSATI'
 --- !u!222 &1241482023
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3806,7 +3799,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: -870.8
+  m_Spacing: -834.17
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
