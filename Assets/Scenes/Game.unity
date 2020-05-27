@@ -331,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 1535944827325750702, guid: b8fe94f0b3fcfb544a5516d7f4e489be,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: LoadMenu
       objectReference: {fileID: 0}
     - target: {fileID: 1535944827325750702, guid: b8fe94f0b3fcfb544a5516d7f4e489be,
         type: 3}
@@ -1046,7 +1046,7 @@ PrefabInstance:
     - target: {fileID: 1535944827325750703, guid: b8fe94f0b3fcfb544a5516d7f4e489be,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -61.099976
+      value: -61.100098
       objectReference: {fileID: 0}
     - target: {fileID: 1535944827325750703, guid: b8fe94f0b3fcfb544a5516d7f4e489be,
         type: 3}
@@ -2120,7 +2120,7 @@ PrefabInstance:
     - target: {fileID: 1535944827321133016, guid: b8fe94f0b3fcfb544a5516d7f4e489be,
         type: 3}
       propertyPath: m_Text
-      value: SHOW BEST PATH
+      value: SHOW A PATH
       objectReference: {fileID: 0}
     - target: {fileID: 1535944827321133016, guid: b8fe94f0b3fcfb544a5516d7f4e489be,
         type: 3}

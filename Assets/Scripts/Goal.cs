@@ -12,6 +12,7 @@ public class Goal : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            SoundManager.instance.PlaySFX(0);
             Debug.Log("Game won");
 
             Instantiate(particle, gameObject.transform.position, Quaternion.identity);

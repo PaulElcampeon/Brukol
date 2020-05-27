@@ -21,6 +21,8 @@ public class InGameMenu : MonoBehaviour
 
     public void CloseMenu()
     {
+        SoundManager.instance.PlaySFX(2);
+
         GameManager.instance.UnPause();
 
         isMenuOpen = false;
@@ -40,6 +42,8 @@ public class InGameMenu : MonoBehaviour
     public void OpenMenuPanel()
     {
         if (playAgainPanel.activeInHierarchy) return;
+
+        SoundManager.instance.PlaySFX(1);
 
         GameManager.instance.Pause();
 
@@ -61,13 +65,17 @@ public class InGameMenu : MonoBehaviour
     {
         if (inGameMenuPanel.activeInHierarchy) return;
 
+        SoundManager.instance.PlaySFX(1);
+
         GameManager.instance.UnPause();
 
         GameManager.instance.LoadScene("Game");
     }
 
-    public void LoadScene()
+    public void LoadMenu()
     {
+        SoundManager.instance.PlaySFX(1);
+
         GameManager.instance.UnPause();
 
         GameManager.instance.LoadScene("Menu");
@@ -80,10 +88,6 @@ public class InGameMenu : MonoBehaviour
 
     public void ChangeDifficulty(int level)
     {
-        //if (playAgainPanel.activeInHierarchy) return;
-
-        //if (inGameMenuPanel.activeInHierarchy) return;
-
         GameManager.instance.difficulty = level;
 
         ResetGame();

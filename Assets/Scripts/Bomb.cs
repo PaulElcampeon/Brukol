@@ -12,6 +12,8 @@ public class Bomb : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            SoundManager.instance.PlaySFX(3);
+
             other.gameObject.GetComponent<LittleOne>().Die();
 
             Instantiate(particle, gameObject.transform.position, Quaternion.identity);
