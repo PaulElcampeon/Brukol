@@ -77,4 +77,15 @@ public class InGameMenu : MonoBehaviour
     {
         PathFinder.instance.DisplayPath();
     }
+
+    public void ChangeDifficulty(int level)
+    {
+        //if (playAgainPanel.activeInHierarchy) return;
+
+        //if (inGameMenuPanel.activeInHierarchy) return;
+
+        GameManager.instance.difficulty = level;
+
+        ResetGame();
+    }
 }
