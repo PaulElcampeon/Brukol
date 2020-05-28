@@ -21,8 +21,6 @@ public class GameManager : MonoBehaviour
     public void SetDifficulty(int level)
     {
         difficulty = level;
-
-        Debug.Log("Difficulty set to " + level);
     }
 
     public void LoadScene(string sceneName)
@@ -42,8 +40,6 @@ public class GameManager : MonoBehaviour
 
     public void ExitGame()
     {
-        Debug.Log("Quiting Game...");
-
         Application.Quit();
     }
 }

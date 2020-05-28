@@ -33,7 +33,6 @@ public class LevelGenerator : MonoBehaviour
         instance = this;
 
         difficulty = GameManager.instance.difficulty;
-        Debug.Log("Difficulty is " + difficulty);
 
         if (difficulty == 1)
         {
@@ -102,8 +101,6 @@ public class LevelGenerator : MonoBehaviour
             }
         }
 
-        Debug.Log("Generated Level");
-
         AssignStartingCell();
 
         EnableBombs();
@@ -129,14 +126,11 @@ public class LevelGenerator : MonoBehaviour
                 if (!cell.hasBomb && !cell.isStartingPoint)
                 {
                     cell.hasBomb = true;
-                    Debug.Log("Cell has bomb " + cell.GetGridPos());
                     bombsRemaining--;
 
                 }
             }
         }
-
-        Debug.Log("No more bombs remaining");
     }
 
     private void AssignStartingCell()
@@ -153,33 +147,6 @@ public class LevelGenerator : MonoBehaviour
             cell.isStartingPoint = true;
             startingCell = cell;
         }
-
-        //Vector2Int position = Vector2Int.zero;
-
-        //bool foundAvailablePos = false;
-
-        //Cell cell;
-
-        //while (foundAvailablePos == false)
-        //{
-        //    int randomXPos = Random.Range(1, (int)noOfBlocksAcross + 1);
-        //    int yPos = (int)noOfBlocksDownward;
-
-        //    position = new Vector2Int(randomXPos, yPos);
-
-        //    if (worldState.TryGetValue(position, out cell))
-        //    {
-
-        //        if (!cell.hasBomb)
-        //        {
-        //            cell.isStartingPoint = true;
-        //            startingCell = cell;
-        //            foundAvailablePos = true;
-        //        }
-        //    }
-        //}
-
-        Debug.Log("Starting point: " + position);
     }
 
     private void AssignEndingCell()
@@ -210,8 +177,6 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
         }
-
-        Debug.Log("Ending point: " + position);
     }
 }
 

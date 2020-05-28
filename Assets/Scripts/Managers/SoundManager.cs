@@ -76,14 +76,10 @@ public class SoundManager : MonoBehaviour
         bgmVolume = volume;
 
         UpdateBGMThatMayBePlaying();
-
-        Debug.Log("BGM Volume is now: " + volume);
     }
 
     public void UpdatetSFXVolume(float volume)
     {
         sfxVolume = volume;
-
-        Debug.Log("SFX Volume is now: " + volume);
     }
 }

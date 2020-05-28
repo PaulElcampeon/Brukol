@@ -8,19 +8,8 @@ public class RescaleToScreenSize : MonoBehaviour
     private void Awake()
     {
         ScaleBackgroundToFitScreenSize();
-
-
-    }
-    void Start()
-    {
-        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void ScaleBackgroundToFitScreenSize()
     {

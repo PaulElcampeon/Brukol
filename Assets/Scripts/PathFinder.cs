@@ -43,7 +43,6 @@ public class PathFinder : MonoBehaviour
         }
         catch
         {
-            Debug.LogWarning("Calling Regenerate again");
             Generate();
         }
     }
@@ -121,9 +120,6 @@ public class PathFinder : MonoBehaviour
                     if (!cell.hasBomb && cell.GetGridPos().y >= LevelGenerator.instance.endingCell.GetGridPos().y)
                     {
                         QueueNewNeighbours(neighbourCoordinates);
-                    } else
-                    {
-                        Debug.Log("Our neighbour at: " + cell.GetGridPos() + " has a bomb, we will ignore him");
                     }
                 }
             }
