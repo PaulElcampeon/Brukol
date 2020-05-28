@@ -23,6 +23,6 @@ public class Goal : MonoBehaviour
 
     public void OpenPlayAgain()
     {
-        InGameMenu.instance.OpenPlayAgainPanel();
+        InGameUI.instance.OpenPlayAgainPanel();
     }
 }

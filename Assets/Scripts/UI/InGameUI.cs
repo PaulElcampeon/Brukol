@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
-public class InGameMenu : MonoBehaviour
+public class InGameUI : MonoBehaviour
 {
     [SerializeField]
     private GameObject playAgainPanel;
@@ -10,13 +11,56 @@ public class InGameMenu : MonoBehaviour
     [SerializeField]
     private GameObject inGameMenuPanel;
 
-    public static InGameMenu instance;
+    [SerializeField]
+    private GameObject one;
+
+    [SerializeField]
+    private GameObject two;
+
+    [SerializeField]
+    private GameObject three;
+
+    private Color normalColour = new Color(255f, 255f, 255f, 255f);
+    private Color highlightColour = new Color(135f, 97f, 64f, 255f);
+    private Color textColour = new Color(0, 0, 0, 255f);
+
+    public static InGameUI instance;
 
     public bool isMenuOpen;
 
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start()
+    {
+        int difficulty = GameManager.instance.difficulty;
+
+        ColorBlock colors;
+
+        if (difficulty == 1)
+        {
+            colors = one.GetComponent<Button>().colors;
+            colors.normalColor = normalColour;
+            colors.normalColor = highlightColour;
+            one.GetComponent<Button>().colors = colors;
+            one.GetComponentInChildren<Text>().color = textColour;
+        } else if (difficulty == 2)
+        {
+            colors = two.GetComponent<Button>().colors;
+            colors.normalColor = normalColour;
+            colors.normalColor = highlightColour;
+            two.GetComponent<Button>().colors = colors;
+            two.GetComponentInChildren<Text>().color = textColour;
+        } else if (difficulty == 3)
+        {
+            colors = three.GetComponent<Button>().colors;
+            colors.normalColor = normalColour;
+            colors.normalColor = highlightColour;
+            three.GetComponent<Button>().colors = colors;
+            three.GetComponentInChildren<Text>().color = textColour;
+        }
     }
 
     public void CloseMenu()

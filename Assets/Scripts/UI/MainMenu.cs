@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour
@@ -18,7 +19,7 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField]
     private GameObject creditsPanel;
-  
+
     public void OpenSettingsPanel()
     {
         SoundManager.instance.PlaySFX(1);
