@@ -11,11 +11,19 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance == null)
+        {
+            difficulty = 1;
+
+            instance = this;
+
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
 
         DontDestroyOnLoad(this);
-
-        difficulty = 1;
     }
 
     public void SetDifficulty(int level)
