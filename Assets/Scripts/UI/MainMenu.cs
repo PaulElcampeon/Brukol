@@ -80,9 +80,9 @@ public class MainMenu : MonoBehaviour
         GameManager.instance.UnPause();
         GameManager.instance.LoadScene("Game");
     }
+
     public void ExitGame()
     {
         GameManager.instance.ExitGame();
     }
-
 }

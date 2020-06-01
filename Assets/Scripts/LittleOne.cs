@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public class LittleOne : MonoBehaviour
 {
-
     [Header("Attributes")]
     [SerializeField]
     private float jumpHeight;

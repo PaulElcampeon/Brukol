@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-
     [SerializeField]
     private GameObject particle;
 

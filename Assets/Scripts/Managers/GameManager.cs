@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
             difficulty = 1;
 
             instance = this;
-
         }
         else
         {
