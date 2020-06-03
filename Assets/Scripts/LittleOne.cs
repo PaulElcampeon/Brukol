@@ -63,15 +63,24 @@ public class LittleOne : MonoBehaviour
         if (GameManager.instance.difficulty == 1) multiplier *= 2f;
         if (GameManager.instance.difficulty == 2) multiplier *= 1.5f;
 
-        float dist = 0.55f * multiplier;
+        float dist = 0.28f * multiplier;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + (Vector3.left * 0.28f + Vector3.down / 5) * multiplier, Vector2.right, dist, groundLayerMask);
+        RaycastHit2D hitRight = Physics2D.Raycast(transform.position + (Vector3.down / 5) * multiplier, Vector2.right, dist, groundLayerMask);
+        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position + (Vector3.down / 5) * multiplier, Vector2.left, dist, groundLayerMask);
 
-        Debug.DrawRay(transform.position + (Vector3.left * 0.28f  + Vector3.down / 5) * multiplier, Vector2.right * dist, Color.red);
+        Debug.DrawRay(transform.position + (Vector3.down / 5) * multiplier, Vector2.right * dist, Color.red);
+        Debug.DrawRay(transform.position + (Vector3.down / 5) * multiplier, Vector2.left * dist, Color.red);
 
-        if (hit.collider != null)
+
+
+        if (hitRight.collider != null)
         {
-            movementSpeed *= -1f;
+            movementSpeed = -1f;
+        }
+
+        if (hitLeft.collider != null)
+        {
+            movementSpeed = 1f;
         }
     }
 
